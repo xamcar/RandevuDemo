@@ -1,0 +1,88 @@
+﻿@page "/randevu"
+@model RandevuDemo.Pages.Musteri.RandevuModel
+@{
+}
+
+<div class="row mt-4">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                BİLGİLERİNİZ
+            </div>
+            <div class="card-body">
+                <div>Kullanıcı Adı: <span>@Model.musteri?.Username</span></div>
+                <div>Ad: <span>@Model.musteri?.Ad</span></div>
+                <div>Soyad: <span>@Model.musteri?.Soyad</span></div>
+                <div>Doğum Tarihi: <span>@Model.musteri?.DogumTarihi.ToString("dd.MM.yyyy")</span></div>
+
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                RANDEVU AL
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Kuafor</label>
+                        <select name="DoktorId" class="form-control">
+                            @foreach (var kuafor in Model.Kuaforler)
+                            {
+                                <option value="@kuafor.Id">@kuafor.KuaforDukkani.Ad - @kuafor.Ad @kuafor.Soyad</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tarih</label>
+                        <input name="Tarih" class="form-control" type="date" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Saat</label>
+                        <input name="Saat" class="form-control" type="time" required />
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3">Randevu Al</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                RANDEVULARINIZ
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>KUAFOR DÜKKANI</th>
+                            <th>KUAFOR</th>
+                            <th>TARİH</th>
+                            <th>SAAT</th>
+                            <th>DURUM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var randevu in Model.randevular)
+                        {
+                            <tr>
+                                <td>@randevu.Kuafor.KuaforDukkani.Ad</td>
+                                <td>@randevu.Kuafor.Ad @randevu.Kuafor.Soyad</td>
+                                <td>@randevu.Tarih.ToString("dd.MM.yyyy")</td>
+                                <td>@randevu.Saat</td>
+                                <td>@randevu.Durum.Durum</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<b></b>

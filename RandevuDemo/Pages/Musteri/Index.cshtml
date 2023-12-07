@@ -1,0 +1,43 @@
+﻿@page "/"
+@model RandevuDemo.Pages.Musteri.IndexModel
+@{
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label">Kullanıcı Adı</label>
+                <input name="Username" type="text" class="form-control" placeholder="Kullanıcı adınızı giriniz." value="@(Model.PostData.Username == 0 ? "" : Model.PostData.Username )">
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="form-label">Adınız</label>
+                        <input  name="Ad"  type="text" class="form-control" placeholder="Adınızı giriniz."  value="@Model.PostData.Ad">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="form-label">Soyadınız</label>
+                        <input name="Soyad" type="text" class="form-control" placeholder="Soyadınızı giriniz." value="@Model.PostData.Soyad">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="form-label">Doğum Tarihiniz</label>
+                        <input name="DogumTarihi" type="date" class="form-control" placeholder="Doğrum tarihinizi giriniz."  value="@(Model.PostData.DogumTarihi  == DateTime.MinValue ? "" : Model.PostData.DogumTarihi.ToString("yyyy-MM-dd"))">
+                    </div>
+                </div>
+            </div>
+            <div>
+                @Model.Mesaj
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Randevu Al</button>
+            </div>
+        </div>
+    </div>
+</form>
