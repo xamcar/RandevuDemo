@@ -64,7 +64,6 @@ namespace RandevuDemo.Pages.Musteri
             public long Username { get; set; }
             public string Ad { get; set; } = string.Empty;
             public string Soyad { get; set; } = string.Empty;
-            public DateTime DogumTarihi { get; set; }
 
         }
     }
